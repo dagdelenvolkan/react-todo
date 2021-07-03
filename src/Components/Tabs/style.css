@@ -14,6 +14,10 @@
     background-color: #ebebeb;
 }
 
+.react-tabs__tab:hover .tabCloseIcon {
+    display: block;
+}
+
 .addTab {
     position: absolute;
     border-top-left-radius: 5px;
@@ -62,10 +66,12 @@
     top: 2px;
     right: 2px;
     cursor: pointer;
+    display: none;
 }
 
 .react-tabs__tab--selected .tabCloseIcon {
     color: black;
+    display: block;
 }
 
 .react-tabs__tab--selected .tabCloseIcon:hover {

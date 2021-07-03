@@ -1,5 +1,5 @@
 import React from 'react'
-import { UilTrash } from '@iconscout/react-unicons'
+import { UilTimes   } from '@iconscout/react-unicons'
 import './style.css'
 
 
@@ -9,7 +9,7 @@ export default function Todo(props) {
             <span className={'todoItem' + ' ' + props.checked} onClick={props.makeComplete}>
                 {props.text}
             </span>
-            <UilTrash className='todoIcon' onClick={props.removeItem}/>
+            <UilTimes   className='todoIcon' onClick={props.removeItem}/>
         </div>
     )
 }
