@@ -1,0 +1,78 @@
+.react-tabs__tab:nth-child(1) {
+    margin-left: 50px;
+}
+.react-tabs__tab {
+    padding-right: 35px;
+    cursor: context-menu;
+}
+
+.react-tabs__tab:hover {
+    background-color: #ebebeb;
+}
+
+.react-tabs__tab:hover .tabTitle {
+    background-color: #ebebeb;
+}
+
+.addTab {
+    position: absolute;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    cursor: pointer;
+    width: 49px;
+    height: 32px;
+    top: 1px;
+
+}
+
+.addTab svg{
+    fill: #757575;
+}
+
+.addTab:hover {
+    background-color: #ebebeb;
+}
+
+.addTab:hover svg {
+    fill: black;
+}
+
+.toDoTitle {
+    display: flex;
+    justify-content: center;  
+    margin-top: 50px;
+}
+
+.tabTitle {
+    border: none;
+    outline: none;
+    font-size: 50px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.tabCloseIcon {
+    color: #a0a0a0;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+}
+
+.react-tabs__tab--selected .tabCloseIcon {
+    color: black;
+}
+
+.react-tabs__tab--selected .tabCloseIcon:hover {
+    color: #747474;
+}
+
+
+.tabCloseIcon:hover {
+    color: black;
+}

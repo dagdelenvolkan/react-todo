@@ -1,0 +1,37 @@
+
+.completed {
+    text-decoration: line-through;
+}
+
+
+
+
+.todoItemContainer {
+    display: flex;
+    align-items: center;
+}
+
+.todoItem {
+    width: calc(100% - 22px);
+    padding-left: 10px;
+    overflow-x: hidden;
+    margin-right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 10px 5px;
+}
+
+.todoItem:hover {
+    background-color: #f1f1f1;
+}
+
+.todoIcon {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    padding-right: 7px;
+}
+
+.todoIcon:hover {
+    color: #9c9c9c;
+}

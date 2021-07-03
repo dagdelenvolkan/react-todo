@@ -1,0 +1,43 @@
+
+
+.TodoApp {
+    
+    width: 500px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    gap: 2px 0;    
+    margin-top: 50px;
+    
+}
+
+.todoTop input{
+    box-sizing: border-box;
+    width: calc(100% - 80px);
+    height: 40px;
+    padding-left: 15px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+
+.addTodoItem {
+    width: 40px;
+    height: 40px;
+    float: right;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+}
+
+.addTodoItem:hover {
+    background-color: #f5f5f5;
+
+}
+
+
