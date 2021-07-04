@@ -1,21 +1,39 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { UilPlus, UilTrash  } from '@iconscout/react-unicons'
 import Todo from '../Todo/TodoItem'
 import './style.css'
 
 
-export default function ToDoList() {
+export default function ToDoList(props) {
     const [todos, setTodos] = useState([])
     const [inputTodo, setinputTodo] = useState('')
 
+    const saveTodoData = (latestTodos) => {
+        localStorage.setItem(`todoData${props.tabData}`, JSON.stringify(latestTodos))
+    }
+
+    useEffect(() => {
+        if (localStorage.getItem(`todoData${props.tabData}`)) {
+            setTodos(JSON.parse(localStorage.getItem(`todoData${props.tabData}`)));
+        }}, []);
+
     const addItem = () => {
-        setTodos([...todos, {id: Date.now(), baslik: inputTodo, completed:false}]);
+        let addTodos = [...todos, {id: Date.now(), baslik: inputTodo, completed:false}]
+        setTodos(addTodos);
         setinputTodo('')
+        saveTodoData(addTodos)
     }
 
     const removeCompleted = () => {
         let uncompTodos = todos.filter((todo) => todo.completed === false)
-        setTodos([...uncompTodos])
+        setTodos([...uncompTodos])    
+        saveTodoData([...uncompTodos])
+    }
+
+    const makeComplete = (todos, todo) => {
+        let complete = todos.map(item => item.id === todo.id ? {...item, completed: !item.completed} : item)
+        setTodos(complete)
+        saveTodoData(complete)
     }
 
     return (
@@ -34,20 +52,20 @@ export default function ToDoList() {
             </div>
             
 
+            
             {todos.map((todo) => (
 
                 <Todo 
                     text={todo.baslik}
-                    makeComplete={() =>  {
-                        setTodos(todos.map(item => item.id === todo.id ? {...item, completed: !item.completed} : item))
-                    }}
+                    makeComplete={() => makeComplete(todos, todo)}
                     removeItem = {()=> {
                         setTodos(todos.filter(item => item.id !== todo.id))
                     }}
                     key={todo.id}
                     checked = {todo.completed ? 'completed'  : ''}
                 />
-            ))}
+                ))}
+
             
         </div>
     )

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { UilPlus, UilMultiply  } from '@iconscout/react-unicons'
 import ToDoList from '../TodoList/ToDoList';
@@ -10,18 +10,34 @@ import './style.css'
 export default function TabTodo() {
     const [tabs, setTabs] = useState([{title:'ToDo', id:1}])
 
+
+    const saveTabsData = (latestTabs) => {
+        localStorage.setItem('todoTabs', JSON.stringify(latestTabs))
+    }
+
+    useEffect(() => {
+        if (localStorage.getItem("todoTabs")) {
+            setTabs(JSON.parse(localStorage.getItem("todoTabs")));
+        }
+
+      }, []);
+
     const addNewTab = () => {
-        setTabs([...tabs, {title:'New Tab', id: Date.now()}])
+        let newTab = [...tabs, {title:'New Tab', id: Date.now()}]
+        setTabs(newTab)
+        saveTabsData(newTab)
     }
 
     const closeTab = (index) => {
         tabs.splice(index, 1)
         setTabs([...tabs]) 
+        saveTabsData([...tabs])
     }
 
     const changeTabName = (e, tab) => {
         tab.title= e.target.value
         setTabs([...tabs]) 
+        saveTabsData([...tabs])
     }
 
     return (
@@ -40,16 +56,14 @@ export default function TabTodo() {
                 </Tab>
                 ))}
                 </TabList>
-
                 {tabs.map(tab => (
                 <TabPanel key={tab.id}>
                     <div className='toDoTitle'>
                     <input type="text" className='tabTitle' value={tab.title} onChange={(e) =>  changeTabName(e, tab)}/>
                     </div>
-                    <ToDoList />
+                    <ToDoList tabData={tab.id}/>
                 </TabPanel>
                 ))}
-            
         
             </Tabs>
         </div>
