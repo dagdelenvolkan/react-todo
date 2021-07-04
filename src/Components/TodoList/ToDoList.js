@@ -13,19 +13,22 @@ export default function ToDoList() {
         setinputTodo('')
     }
 
+    const removeCompleted = () => {
+        let uncompTodos = todos.filter((todo) => todo.completed === false)
+        setTodos([...uncompTodos])
+    }
+
     return (
         <div className='TodoApp'>
             <div className="todoTop">
                 <input placeholder='Enter a task' type="todos" onChange={(e) => setinputTodo(e.target.value)} onKeyPress={(e)=> e.key === 'Enter' ? addItem() : null}  value={inputTodo}/>
                 <button className='addTodoItem'
-                onClick={(e) => {
-                    let uncompTodos = todos.filter((todo) => todo.completed === false)
-                    setTodos([...uncompTodos])
-                }}
+                onClick={removeCompleted}
+                disabled={!todos.filter((todo) => todo.completed === true)[0]}
                 >
                     <UilTrash/>
                 </button>
-                <button className='addTodoItem' disabled={!inputTodo} onClick={() => addItem()}>
+                <button className='addTodoItem' disabled={!inputTodo} onClick={addItem}>
                     <UilPlus/>
                 </button>
             </div>
