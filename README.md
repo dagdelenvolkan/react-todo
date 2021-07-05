@@ -21,3 +21,8 @@ Live Demo: https://planwithtodo.netlify.app/
 
 ## Todo App Media
 ![Todo App Gif](images/todo.gif)
+
+
+## LICENSE
+<hr>
+MIT LICENSE
