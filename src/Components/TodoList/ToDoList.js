@@ -36,6 +36,13 @@ export default function ToDoList(props) {
         saveTodoData(complete)
     }
 
+
+    const removeItem = (todos, todo) => {
+        let remove = todos.filter(item => item.id !== todo.id)
+        setTodos(remove)
+        saveTodoData(remove)
+    }
+
     return (
         <div className='TodoApp'>
             <div className="todoTop">
@@ -59,7 +66,7 @@ export default function ToDoList(props) {
                     text={todo.baslik}
                     makeComplete={() => makeComplete(todos, todo)}
                     removeItem = {()=> {
-                        setTodos(todos.filter(item => item.id !== todo.id))
+                        removeItem(todos, todo)
                     }}
                     key={todo.id}
                     checked = {todo.completed ? 'completed'  : ''}
