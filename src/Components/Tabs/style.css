@@ -82,3 +82,12 @@
 .tabCloseIcon:hover {
     color: black;
 }
+
+
+@media all and (max-width: 570px) {
+    .tabTitle {
+    
+        width: 340px;
+        
+    }
+}
